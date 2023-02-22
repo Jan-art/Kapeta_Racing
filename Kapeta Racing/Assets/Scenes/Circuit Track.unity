@@ -684,7 +684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689231905875549551, guid: ed4989845edf0db41b13d58cb807e8c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1178.9882
+      value: -1178.988
       objectReference: {fileID: 0}
     - target: {fileID: 5689231905875549551, guid: ed4989845edf0db41b13d58cb807e8c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -720,6 +720,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689231905875549551, guid: ed4989845edf0db41b13d58cb807e8c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006025734312740196, guid: ed4989845edf0db41b13d58cb807e8c4, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1121,6 +1125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8698474696000088691, guid: 65d81ab5590dba7419e05569839f56eb, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 25bb2e7ca5061cf42b8bbe6f32ed2922, type: 2}
     - target: {fileID: 8997304460990595580, guid: 65d81ab5590dba7419e05569839f56eb, type: 3}
       propertyPath: m_Name
       value: CTrack_Colliders

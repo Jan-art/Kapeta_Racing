@@ -1397,6 +1397,7 @@ GameObject:
   - component: {fileID: 21825101843415101}
   - component: {fileID: 6988195069654614329}
   - component: {fileID: 2534617024333674979}
+  - component: {fileID: 7006025734312740196}
   m_Layer: 0
   m_Name: tyre_block_003
   m_TagString: Untagged
@@ -1469,6 +1470,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7006025734312740196
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786756218365143275}
+  m_Material: {fileID: 13400000, guid: 25bb2e7ca5061cf42b8bbe6f32ed2922, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.240814, y: 1.281918, z: 2.7842636}
+  m_Center: {x: 98.47795, y: 0.6439848, z: -40.98446}
 --- !u!1 &6617647610029086054
 GameObject:
   m_ObjectHideFlags: 0
