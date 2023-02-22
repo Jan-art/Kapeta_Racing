@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class DriftCamera : MonoBehaviour
+public class DriftCam : MonoBehaviour
 {
     [Serializable]
     public class AdvancedOptions
@@ -9,7 +9,7 @@ public class DriftCamera : MonoBehaviour
         public bool updateCameraInUpdate;
         public bool updateCameraInFixedUpdate = true;
         public bool updateCameraInLateUpdate;
-        public KeyCode switchViewKey = KeyCode.Space;
+        public KeyCode switchViewKey = KeyCode.H;
     }
 
     public float smoothing = 6f;
@@ -20,7 +20,7 @@ public class DriftCamera : MonoBehaviour
 
     bool m_ShowingSideView;
 
-    public static DriftCamera instance;
+    public static DriftCam instance;
 
     void Awake()
     {

@@ -397,18 +397,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8269762863795691713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae7c7393a1f4542c2a21e188b0a6286c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d3239963860059458990b2edbfb53ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedOmeterGameObject: {fileID: 8269762863795691713}
-  target: {fileID: 0}
+  _speedMeterOBJ: {fileID: 0}
+  _KartBody: {fileID: 0}
   _photonView: {fileID: 0}
-  _maxSpeed: 220
-  _minSpeedArrowAngle: 209.9
-  _maxSpeedArrowAngle: -33.7
-  _speedLabel: {fileID: 4188067026833249805}
-  _maxSpeedLabel: {fileID: 0}
-  _arrow: {fileID: 2921126657793633142}
+  _maxSpeed: 0
+  _minSpeedArrowAngle: 0
+  _maxSpeedArrowAngle: 0
+  _speedText: {fileID: 0}
+  _arrow: {fileID: 0}
 --- !u!1 &9068679588957880918
 GameObject:
   m_ObjectHideFlags: 0

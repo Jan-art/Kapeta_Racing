@@ -40,22 +40,9 @@ public class WheelDrive : MonoBehaviour
 	{
 		m_Wheels = GetComponentsInChildren<WheelCollider>();
 
-		//for (int i = 0; i < m_Wheels.Length; ++i) 
-		//{
-		//	var wheel = m_Wheels [i];
-
-		//	// Create wheel shapes only when needed.
-		//	if (wheelShape != null)
-		//	{
-		//		//var ws = Instantiate (wheelShape);
-		//		//ws.transform.parent = wheel.transform;
-		//	}
-		//}
 	}
 
-	// This is a really simple approach to updating wheels.
-	// We simulate a rear wheel drive car and assume that the car is perfectly symmetric at local zero.
-	// This helps us to figure our which wheels are front ones and which are rear.
+
 	void Update()
 	{
         if (_photonView.IsMine)
@@ -65,7 +52,7 @@ public class WheelDrive : MonoBehaviour
 			float angle = maxAngle * Input.GetAxis("Horizontal");
 			float torque = maxTorque * Input.GetAxis("Vertical");
 
-			float handBrake = Input.GetKey(KeyCode.X) ? brakeTorque : 0;
+			float handBrake = Input.GetKeyDown(KeyCode.Space) ? brakeTorque : 0;
 
 			foreach (WheelCollider wheel in m_Wheels)
 			{
@@ -98,7 +85,7 @@ public class WheelDrive : MonoBehaviour
 					// Assume that the only child of the wheelcollider is the wheel shape.
 					Transform shapeTransform = wheel.transform.GetChild(0);
 
-					if (wheel.name == "a0l" || wheel.name == "a1l" || wheel.name == "a2l")
+					if (wheel.name == "MotorWheel_L0" || wheel.name == "MotorWheel_L1" || wheel.name == "MotorWheel_L2")
 					{
 						shapeTransform.rotation = q * Quaternion.Euler(0, 0, 0);
 						shapeTransform.position = p;

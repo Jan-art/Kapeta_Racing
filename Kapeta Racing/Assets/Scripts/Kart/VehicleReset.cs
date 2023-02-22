@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class CarSwitcher : MonoBehaviour
+//RESET VEHICLE IF UPSIDEDOWN
+public class VehicleReset : MonoBehaviour
 {
 	public GameObject vehicle;
-	public Transform spawnPoints;
+	public Transform spawnlocation;
 
-	private DriftCamera m_DriftCamera;
+	private DriftCam v_DriftCam;
 	private int m_VehicleId;
 
-	public static CarSwitcher instance;
+	public static VehicleReset instance;
 
 	void Awake()
     {
@@ -18,47 +19,23 @@ public class CarSwitcher : MonoBehaviour
 
 	void Start () 
     {
-		m_DriftCamera = GetComponent<DriftCamera>();
+		v_DriftCam = GetComponent<DriftCam>();
 	}
 	
 	void Update () 
     {
-		//if (Input.GetKeyUp(KeyCode.K))	
-		//{
-		//	// Disable the previous vehicle.
-		//	vehicles[m_VehicleId].SetActive(false);
-
-		//	m_VehicleId = (m_VehicleId + 1) % vehicles.Count;
-
-		//	vehicles[m_VehicleId].SetActive(true);
-
-		//	var graph = GetComponent<GraphOverlay>();
-		//	if (graph)
-		//	{
-		//		graph.vehicleBody = vehicles[m_VehicleId].GetComponent<Rigidbody>();
-		//		graph.SetupWheelConfigs();
-		//	}
-
-		//	// Setup the new one.
-		//	Transform vehicleT = vehicles[m_VehicleId].transform;
-		//	Transform camRig = vehicleT.Find("CamRig");
-
-		//	m_DriftCamera.lookAtTarget = camRig.Find("CamLookAtTarget");
-		//	m_DriftCamera.positionTarget = camRig.Find("CamPosition");
-		//	m_DriftCamera.sideView = camRig.Find("CamSidePosition");
-		//}
-
-		if (Input.GetKeyUp(KeyCode.R))
+    // Input Key
+		if (Input.GetKeyDown(KeyCode.R))
 		{
 			Transform vehicleTransform = vehicle.transform;
 			vehicleTransform.rotation = Quaternion.identity;
 
-			Transform closest = spawnPoints.GetChild(0);
+			Transform closest = spawnlocation.GetChild(0);
 
 			// Find the closest spawn point.
-			for (int i = 0; i < spawnPoints.childCount; ++i)
+			for (int i = 0; i < spawnlocation.childCount; ++i)
 			{
-				Transform thisTransform = spawnPoints.GetChild(i);
+				Transform thisTransform = spawnlocation.GetChild(i);
 
 				float distanceToClosest = Vector3.Distance(closest.position, vehicleTransform.position);
 				float distanceToThis = Vector3.Distance(thisTransform.position, vehicleTransform.position);
@@ -69,20 +46,18 @@ public class CarSwitcher : MonoBehaviour
 				}
 			}
 
-			// Spawn at the closest spawn point.
-#if UNITY_EDITOR
+			// Spawn
+     #if UNITY_EDITOR
 			Debug.Log("Teleporting to " + closest.name);
-#endif
+     #endif
 			vehicleTransform.rotation = closest.rotation;
 
-			// Try refining the spawn point so it's closer to the ground.
-            // Here we assume there is only one renderer.  If not, looping over all the bounds could do the trick.
 			var renderer = vehicleTransform.gameObject.GetComponentInChildren<MeshRenderer>();
-            // A valid car must have at least one wheel.
+      
 			var wheel = vehicleTransform.gameObject.GetComponentInChildren<WheelCollider>(); 
 
 			RaycastHit hit;
-            // Boxcast everything except cars.
+      // Boxcast
 			if (Physics.BoxCast(closest.position, renderer.bounds.extents, Vector3.down, out hit, vehicleTransform.rotation, float.MaxValue, ~(1 << LayerMask.NameToLayer("Car"))) )
 			{
 				vehicleTransform.position = closest.position + Vector3.down * (hit.distance - wheel.radius);
@@ -93,7 +68,7 @@ public class CarSwitcher : MonoBehaviour
 				vehicleTransform.position = closest.position;
 			}
 
-			// Reset the velocity.
+			// Velocity Reset
 			var vehicleBody = vehicleTransform.gameObject.GetComponent<Rigidbody>();
 			vehicleBody.velocity = Vector3.zero;
 			vehicleBody.angularVelocity = Vector3.zero;

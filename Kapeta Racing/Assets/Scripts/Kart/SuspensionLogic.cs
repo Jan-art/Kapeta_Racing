@@ -2,7 +2,7 @@
 using Photon.Pun;
 
 [ExecuteInEditMode]
-public class EasySuspension : MonoBehaviour
+public class SuspensionLogic : MonoBehaviour
 {
 	[Range(0.1f, 20f)]
 	[Tooltip("Natural frequency of the suspension springs. Describes bounciness of the suspension.")]
@@ -19,20 +19,23 @@ public class EasySuspension : MonoBehaviour
 	[Tooltip("Adjust the length of the suspension springs according to the natural frequency and damping ratio. When off, can cause unrealistic suspension bounce.")]
 	public bool setSuspensionDistance = true;
 
-    Rigidbody m_Rigidbody;
+    Rigidbody v_rigb;
 
     [SerializeField] PhotonView _photonView;
 
+    //========================================================================================================
+
     void Start ()
     {
-        m_Rigidbody = GetComponent<Rigidbody> ();
+        v_rigb = GetComponent<Rigidbody> ();
+        
     }
     
 	void Update () 
     {
         if (_photonView.IsMine)
         {
-            // Work out the stiffness and damper parameters based on the better spring model.
+            //  Damper parameters based on the better spring model.
             foreach (WheelCollider wc in GetComponentsInChildren<WheelCollider>())
             {
                 JointSpring spring = wc.suspensionSpring;
@@ -44,9 +47,10 @@ public class EasySuspension : MonoBehaviour
                 wc.suspensionSpring = spring;
 
                 Vector3 wheelRelativeBody = transform.InverseTransformPoint(wc.transform.position);
-                float distance = m_Rigidbody.centerOfMass.y - wheelRelativeBody.y + wc.radius;
+                float distance = v_rigb.centerOfMass.y - wheelRelativeBody.y + wc.radius;
 
                 wc.forceAppPointDistance = distance - forceShift;
+        
 
                 // Make sure the spring force at maximum droop is exactly zero
                 if (spring.targetPosition > 0 && setSuspensionDistance)
@@ -63,10 +67,11 @@ public class EasySuspension : MonoBehaviour
             GUILayout.Label (string.Format("{0} sprung: {1}, k: {2}, d: {3}", wc.name, wc.sprungMass, wc.suspensionSpring.spring, wc.suspensionSpring.damper));
         }
 
-        GUILayout.Label ("Inertia: " + m_Rigidbody.inertiaTensor);
-        GUILayout.Label ("Mass: " + m_Rigidbody.mass);
-        GUILayout.Label ("Center: " + m_Rigidbody.centerOfMass);
+        GUILayout.Label ("Inertia: " + v_rigb.inertiaTensor);
+        GUILayout.Label ("Mass: " + v_rigb.mass);
+        GUILayout.Label ("Center: " + v_rigb.centerOfMass);
     }
     */
+    
 
 }

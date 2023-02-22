@@ -666,11 +666,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8118040204755197496}
   - component: {fileID: 8077487174933971678}
-  - component: {fileID: 3657291658745863075}
   - component: {fileID: 3657291658745863076}
   - component: {fileID: 3657291658745863077}
   - component: {fileID: 3657291658745863078}
-  - component: {fileID: 3657291658745863079}
+  - component: {fileID: 544216380998824135}
   m_Layer: 0
   m_Name: Kart
   m_TagString: Untagged
@@ -708,7 +707,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116800386453573772}
   serializedVersion: 2
-  m_Mass: 2000
+  m_Mass: 1500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -716,22 +715,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3657291658745863075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116800386453573772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6fc8d9f2ad5f4162ac61dec9fc8c23c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _photonView: {fileID: 3657291658745863077}
-  _usernameText: {fileID: 0}
-  _usernameCanvas: {fileID: 0}
-  _ownerObj: {fileID: 0}
 --- !u!114 &3657291658745863076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +722,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116800386453573772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
@@ -792,7 +775,7 @@ MonoBehaviour:
   stepsAbove: 1
   driveType: 0
   _photonView: {fileID: 3657291658745863077}
---- !u!114 &3657291658745863079
+--- !u!114 &544216380998824135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -801,7 +784,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8116800386453573772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9153011f8d5851478166a8a42812ea2, type: 3}
+  m_Script: {fileID: 11500000, guid: e86a16eae248ed04eb15d9b2f8bb0397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   naturalFrequency: 10
@@ -881,7 +864,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8118040205828453776}
-  - component: {fileID: 3657291658413840924}
   m_Layer: 0
   m_Name: TopView
   m_TagString: Untagged
@@ -904,19 +886,6 @@ Transform:
   m_Father: {fileID: 8118040207573171152}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3657291658413840924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116800386744706450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c0f7459e62762941a2bb1fa8e3b0dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _photonView: {fileID: 3657291658745863077}
 --- !u!1 &8116800387410994758
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +958,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8118040205780942364}
-  - component: {fileID: 3657291658413840925}
   m_Layer: 0
   m_Name: TargetCam
   m_TagString: Untagged
@@ -1012,19 +980,6 @@ Transform:
   m_Father: {fileID: 8118040207573171152}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3657291658413840925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116800388730398944}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 057bbb36535d60e4fa2f528807b726d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _photonView: {fileID: 3657291658745863077}
 --- !u!1 &8116800389006032884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8118040207573171152
 Transform:
   m_ObjectHideFlags: 0
@@ -1131,7 +1086,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8118040208486916606}
-  - component: {fileID: 3657291658413840923}
   m_Layer: 0
   m_Name: SideView
   m_TagString: Untagged
@@ -1154,19 +1108,6 @@ Transform:
   m_Father: {fileID: 8118040207573171152}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3657291658413840923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116800389063618756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b01c4d6388612344f8a125ce2de0705a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _photonView: {fileID: 3657291658745863077}
 --- !u!1001 &3657291658137694690
 PrefabInstance:
   m_ObjectHideFlags: 0
