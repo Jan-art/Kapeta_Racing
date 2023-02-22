@@ -6,14 +6,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject _playerPrefab;
-    [SerializeField] Animator _anim;
+    
 
     void Start()
     {
         //TODO: Spawn Player
         SpawnPlayer();
 
-        _anim.SetBool("start", true);
+    
     }
 
     void SpawnPlayer()
