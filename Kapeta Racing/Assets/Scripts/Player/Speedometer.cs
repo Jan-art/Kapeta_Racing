@@ -15,7 +15,7 @@ public class Speedometer : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] TMP_Text _speedLabel; // The label that displays the speed;
-    [SerializeField] TMP_Text _maxSpeedLabel;
+    //[SerializeField] TMP_Text _maxSpeedLabel;
     [SerializeField] RectTransform _arrow; // The arrow in the speedometer
 
     float _speed = 0.0f;
@@ -50,12 +50,12 @@ public class Speedometer : MonoBehaviour
             {
                 Debug.Log("MAX SPEED REACHED!", gameObject);
                 _speedLabel.gameObject.SetActive(false);
-                _maxSpeedLabel.gameObject.SetActive(true);
+                //_maxSpeedLabel.gameObject.SetActive(true);
             }
             else
             {
                 _speedLabel.gameObject.SetActive(true);
-                _maxSpeedLabel.gameObject.SetActive(false);
+                //_maxSpeedLabel.gameObject.SetActive(false);
             }
         }
     }
