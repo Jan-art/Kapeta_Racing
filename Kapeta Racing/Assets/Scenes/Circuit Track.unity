@@ -1219,9 +1219,25 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8116800385720505250, guid: 01fd35ca38db6aa489e900943acd53dc, type: 3}
+      propertyPath: m_Name
+      value: MotorWheel_L1
+      objectReference: {fileID: 0}
     - target: {fileID: 8116800386453573772, guid: 01fd35ca38db6aa489e900943acd53dc, type: 3}
       propertyPath: m_Name
       value: Kart
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116800386627556242, guid: 01fd35ca38db6aa489e900943acd53dc, type: 3}
+      propertyPath: m_Name
+      value: MotorWheel_L0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116800387410994758, guid: 01fd35ca38db6aa489e900943acd53dc, type: 3}
+      propertyPath: m_Name
+      value: MotorWheel_R1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116800389023382008, guid: 01fd35ca38db6aa489e900943acd53dc, type: 3}
+      propertyPath: m_Name
+      value: MotorWheel_R0
       objectReference: {fileID: 0}
     - target: {fileID: 8118040204755197496, guid: 01fd35ca38db6aa489e900943acd53dc, type: 3}
       propertyPath: m_RootOrder
