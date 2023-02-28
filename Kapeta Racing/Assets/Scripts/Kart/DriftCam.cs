@@ -9,13 +9,13 @@ public class DriftCam : MonoBehaviour
         public bool updateCameraInUpdate;
         public bool updateCameraInFixedUpdate = true;
         public bool updateCameraInLateUpdate;
-        public KeyCode switchViewKey = KeyCode.H;
+        public KeyCode switchViewKey = KeyCode.Space;
     }
 
     public float smoothing = 6f;
-    public Transform lookAtTarget;
-    public Transform positionTarget;
-    public Transform sideView;
+    public Transform TargetCam;
+    public Transform TopView;
+    public Transform SideView;
     public AdvancedOptions advancedOptions;
 
     bool m_ShowingSideView;
@@ -35,7 +35,7 @@ public class DriftCam : MonoBehaviour
 
     private void Update ()
     {
-        if (Input.GetKeyDown (advancedOptions.switchViewKey))
+        if (Input.GetKey(advancedOptions.switchViewKey))
             m_ShowingSideView = !m_ShowingSideView;
 
         if(advancedOptions.updateCameraInUpdate)
@@ -52,13 +52,13 @@ public class DriftCam : MonoBehaviour
     {
         if (m_ShowingSideView)
         {
-            transform.position = sideView.position;
-            transform.rotation = sideView.rotation;
+            transform.position = SideView.position;
+            transform.rotation = SideView.rotation;
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, positionTarget.position, Time.deltaTime * smoothing);
-            transform.LookAt(lookAtTarget);
+            transform.position = Vector3.Lerp(transform.position, TopView.position, Time.deltaTime * smoothing);
+            transform.LookAt(TargetCam);
         }
     }
 }

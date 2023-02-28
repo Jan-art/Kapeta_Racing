@@ -10,6 +10,13 @@ public class SpeedMeter : MonoBehaviour
     // MAX VEHICLE SPEED* IN KM/H **
     [SerializeField] float _maxSpeed = 0.0f; 
 
+    public float minSpeed;
+    private float currentSpeed;
+    private AudioSource carAudio;
+    public float minPitch;
+    public float maxPitch;
+    private float pitchFromCar;
+
     [SerializeField] float _lowArrowAngle;
     [SerializeField] float _highArrowAngle;
 
@@ -26,6 +33,9 @@ public class SpeedMeter : MonoBehaviour
         {
             _speedMeterOBJ.SetActive(false);
         }
+
+        carAudio = GetComponent<AudioSource>();
+        
     }
 
     private void Update()
@@ -57,5 +67,29 @@ public class SpeedMeter : MonoBehaviour
                 
             }
         }
+
+        EngineSound();
     }
+
+     void EngineSound()
+    {
+        currentSpeed = _KartBody.velocity.magnitude;
+        pitchFromCar = _KartBody.velocity.magnitude / 60f;
+
+        if(currentSpeed < minSpeed)
+        {
+            carAudio.pitch = minPitch;
+        }
+
+        if(currentSpeed > minSpeed && currentSpeed < _maxSpeed)
+        {
+            carAudio.pitch = minPitch + pitchFromCar;
+        }
+
+        if(currentSpeed > _maxSpeed)
+        {
+            carAudio.pitch = maxPitch;
+        }
+    }
+
 }
