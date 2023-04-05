@@ -7,16 +7,23 @@ public class PauseScreen : MonoBehaviour
 {
 
     public static bool StateOn = false;
-    public GameObject PauseMenu;
-    public GameObject SpeedCanvas;
+    public GameObject pauseMenuCanvas;
+    public GameObject speedCanvas;
+
+    void Start()
+    {
+        Time.timeScale = 1f;
+        pauseMenuCanvas.SetActive(false);
+    }
 
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        Debug.Log("Escape Pressed");
+        
         {
+            Debug.Log("Escape Pressed");
             if (StateOn)
             {
                 Resume();
@@ -33,21 +40,34 @@ public class PauseScreen : MonoBehaviour
     public void Resume()
     {
         Debug.Log("Function Resume() was called");
-        PauseMenu.SetActive(false);
+        pauseMenuCanvas.SetActive(false);
         
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         StateOn = false;
-        SpeedCanvas.SetActive(false);
+        speedCanvas.SetActive(true);
     }
 
     void Pause()
     {
         Debug.Log("Function Pause() was called");
-        PauseMenu.SetActive(true);
+        pauseMenuCanvas.SetActive(true);
         
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
         StateOn = true;
-        SpeedCanvas.SetActive(true);
+        speedCanvas.SetActive(false);
+    }
+
+    public void LoadMenu()
+    {
+        Debug.Log("Loading Menu");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting Game");
+        Application.Quit();
     }
 
 }
