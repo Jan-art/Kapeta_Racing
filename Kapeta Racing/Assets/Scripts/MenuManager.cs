@@ -5,15 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Game exiting");
-            Application.Quit();
+    //void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Escape))
+    //     {
+    //         Debug.Log("Game exiting");
+    //         Application.Quit();
 
-        }
-    }
+    //     }
+    // }
 
     
    public void Load(string sceneToLoad)
