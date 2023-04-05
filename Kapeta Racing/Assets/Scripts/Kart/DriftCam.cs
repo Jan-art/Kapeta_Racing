@@ -4,21 +4,22 @@ using UnityEngine;
 public class DriftCam : MonoBehaviour
 {
     [Serializable]
-    public class AdvancedOptions
+    public class CameraStateOptions
     {
-        public bool updateCameraInUpdate;
-        public bool updateCameraInFixedUpdate = true;
-        public bool updateCameraInLateUpdate;
+        //Update Camera States
+        public bool CamUpdateState;
+        public bool CamFixedState = true;
+        public bool CamUpdatedLateState;
         public KeyCode switchViewKey = KeyCode.Space;
     }
 
-    public float smoothing = 6f;
+    public float smoothing = 6.3f;
     public Transform TargetCam;
     public Transform TopView;
     public Transform SideView;
-    public AdvancedOptions advancedOptions;
+    public CameraStateOptions camerastateOptions;
 
-    bool m_ShowingSideView;
+    bool SideViewOn;
 
     public static DriftCam instance;
 
@@ -29,28 +30,28 @@ public class DriftCam : MonoBehaviour
 
     private void FixedUpdate ()
     {
-        if(advancedOptions.updateCameraInFixedUpdate)
+        if(camerastateOptions.CamFixedState)
             UpdateCamera ();
     }
 
     private void Update ()
     {
-        if (Input.GetKey(advancedOptions.switchViewKey))
-            m_ShowingSideView = !m_ShowingSideView;
+        if (Input.GetKey(camerastateOptions.switchViewKey))
+            SideViewOn = !SideViewOn;
 
-        if(advancedOptions.updateCameraInUpdate)
+        if(camerastateOptions.CamUpdateState)
             UpdateCamera ();
     }
 
     private void LateUpdate ()
     {
-        if(advancedOptions.updateCameraInLateUpdate)
+        if(camerastateOptions.CamUpdatedLateState)
             UpdateCamera ();
     }
 
     private void UpdateCamera ()
     {
-        if (m_ShowingSideView)
+        if (SideViewOn)
         {
             transform.position = SideView.position;
             transform.rotation = SideView.rotation;

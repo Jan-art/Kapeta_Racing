@@ -1,49 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-public class CarSounds : MonoBehaviour
-{
-    public float minSpeed;
-    public float maxSpeed;
-    private float currentSpeed;
+// // Simple Vehicle Audio Controller
+// public class VehicleSoundController : MonoBehaviour
+// {
+//     public float baseAcceleration;
+//     public float topAcceleration;
+//     private float velocity;
 
-    private Rigidbody carRb;
-    private AudioSource carAudio;
+//     private Rigidbody vehicleBody;
+//     private AudioSource EngineAudioSource;
 
-    public float minPitch;
-    public float maxPitch;
-    private float pitchFromCar;
+//     public float lowTone;
+//     public float highTone;
+//     private float EngineAudio;
 
-    void Start()
-    {
-        carAudio = GetComponent<AudioSource>();
-        carRb = GetComponent<Rigidbody>();
-    }
+//     void Start()
+//     {
+//         EngineAudioSource = GetComponent<AudioSource>();
+//         vehicleBody = GetComponent<Rigidbody>();
+//     }
 
-    void Update()
-    {
-        EngineSound();
-    }
+//     void Update()
+//     {
+//         EngineSound();
+//     }
 
-    void EngineSound()
-    {
-        currentSpeed = carRb.velocity.magnitude;
-        pitchFromCar = carRb.velocity.magnitude / 60f;
+//     void EngineSound()
+//     {
+//         velocity = vehicleBody.velocity.magnitude;
+//         EngineAudio = vehicleBody.velocity.magnitude / 80f;
 
-        if(currentSpeed < minSpeed)
-        {
-            carAudio.pitch = minPitch;
-        }
+//         if(velocity < baseAcceleration)
+//         {
+//             EngineAudioSource.pitch = lowTone;
+//         }
 
-        if(currentSpeed > minSpeed && currentSpeed < maxSpeed)
-        {
-            carAudio.pitch = minPitch + pitchFromCar;
-        }
+//         if(velocity > baseAcceleration && velocity < topAcceleration)
+//         {
+//             EngineAudioSource.pitch = lowTone + EngineAudio;
+//         }
 
-        if(currentSpeed > maxSpeed)
-        {
-            carAudio.pitch = maxPitch;
-        }
-    }
-}
+//         if(velocity > topAcceleration)
+//         {
+//             EngineAudioSource.pitch = highTone;
+//         }
+//     }
+// }

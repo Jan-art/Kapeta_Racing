@@ -668,8 +668,8 @@ GameObject:
   - component: {fileID: 8077487174933971678}
   - component: {fileID: 3657291658745863076}
   - component: {fileID: 3657291658745863077}
-  - component: {fileID: 3657291658745863078}
   - component: {fileID: 544216380998824135}
+  - component: {fileID: 2770606744564658938}
   m_Layer: 0
   m_Name: Kart
   m_TagString: Untagged
@@ -754,27 +754,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3657291658745863078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116800386453573772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da02a38b8d19ac64a8f94ae251540bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAngle: 60
-  maxTorque: 900
-  brakeTorque: 30000
-  wheelShape: {fileID: 5177893991692770734, guid: fe0924ee3f29c8c40adaf7c4d45534b4, type: 3}
-  criticalSpeed: 5
-  stepsBelow: 5
-  stepsAbove: 1
-  driveType: 0
-  _photonView: {fileID: 3657291658745863077}
 --- !u!114 &544216380998824135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,10 +766,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86a16eae248ed04eb15d9b2f8bb0397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  naturalFrequency: 10
-  dampingRatio: 0.8
-  forceShift: 0.03
-  setSuspensionDistance: 1
+  suspensionRatio: 10
+  dampRatio: 0.8
+  shiftForce: 0.03
+  suspensionAdj: 1
+  _photonView: {fileID: 3657291658745863077}
+--- !u!114 &2770606744564658938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8116800386453573772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c87b79dc4e5a0e41b29c9ac932a29fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 30
+  maxTorque: 300
+  brakeTorque: 30000
+  wheelShape: {fileID: 5177893991692770734, guid: fe0924ee3f29c8c40adaf7c4d45534b4, type: 3}
+  c_velocity: 5
+  b_steps: 5
+  a_steps: 1
+  driveType: 0
   _photonView: {fileID: 3657291658745863077}
 --- !u!1 &8116800386627556242
 GameObject:

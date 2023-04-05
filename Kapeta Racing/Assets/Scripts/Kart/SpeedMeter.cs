@@ -6,16 +6,17 @@ public class SpeedMeter : MonoBehaviour
 {
     [SerializeField] GameObject _speedMeterOBJ;
     [SerializeField] Rigidbody _KartBody;
+    // PhotonView component of the player
     [SerializeField] PhotonView _photonView;
-    // MAX VEHICLE SPEED* IN KM/H **
+   
     [SerializeField] float _maxSpeed = 0.0f; 
 
-    public float minSpeed;
+    public float baseAcceleration;
     private float currentSpeed;
-    private AudioSource carAudio;
+    private AudioSource EngineAudioSource;
     public float minPitch;
     public float maxPitch;
-    private float pitchFromCar;
+    private float EngineAudio;
 
     [SerializeField] float _lowArrowAngle;
     [SerializeField] float _highArrowAngle;
@@ -25,7 +26,7 @@ public class SpeedMeter : MonoBehaviour
    //SPEED METER ARROW
     [SerializeField] RectTransform _arrow; 
 
-    float _speed = 0.0f;
+    float _ConstSpeed = 0.0f;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class SpeedMeter : MonoBehaviour
             _speedMeterOBJ.SetActive(false);
         }
 
-        carAudio = GetComponent<AudioSource>();
+        EngineAudioSource = GetComponent<AudioSource>();
         
     }
 
@@ -43,19 +44,19 @@ public class SpeedMeter : MonoBehaviour
         if (_photonView.IsMine)
         {
             // 3.6f for KM 
-            _speed = _KartBody.velocity.magnitude * 3.6f;
+            _ConstSpeed = _KartBody.velocity.magnitude * 3.6f;
 
             if (_speedText != null)
             {
-                _speedText.text = ((int)_speed) + " KM/H";
+                _speedText.text = ((int)_ConstSpeed) + " KM/H";
             }
                 
             if (_arrow != null)
             {
-                _arrow.localEulerAngles = new Vector3(0, 0, Mathf.Lerp(_lowArrowAngle, _highArrowAngle, _speed / _maxSpeed));
+                _arrow.localEulerAngles = new Vector3(0, 0, Mathf.Lerp(_lowArrowAngle, _highArrowAngle, _ConstSpeed / _maxSpeed));
             }
 
-            if(_speed >= _maxSpeed)
+            if(_ConstSpeed >= _maxSpeed)
             {
                 Debug.Log("MAX SPEED!!!", gameObject);
                 _speedText.gameObject.SetActive(false);
@@ -74,22 +75,21 @@ public class SpeedMeter : MonoBehaviour
      void EngineSound()
     {
         currentSpeed = _KartBody.velocity.magnitude;
-        pitchFromCar = _KartBody.velocity.magnitude / 60f;
+        EngineAudio = _KartBody.velocity.magnitude / 60f;
 
-        if(currentSpeed < minSpeed)
+        if(currentSpeed < baseAcceleration)
         {
-            carAudio.pitch = minPitch;
+            EngineAudioSource.pitch = minPitch;
         }
 
-        if(currentSpeed > minSpeed && currentSpeed < _maxSpeed)
+        if(currentSpeed > baseAcceleration && currentSpeed < _maxSpeed)
         {
-            carAudio.pitch = minPitch + pitchFromCar;
+            EngineAudioSource.pitch = minPitch + EngineAudio;
         }
 
         if(currentSpeed > _maxSpeed)
         {
-            carAudio.pitch = maxPitch;
+            EngineAudioSource.pitch = maxPitch;
         }
     }
-
 }

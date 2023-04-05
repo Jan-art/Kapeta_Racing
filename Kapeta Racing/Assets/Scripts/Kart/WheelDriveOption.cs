@@ -10,9 +10,9 @@ public enum DriveType
 	AllWheelDrive
 }
 
-public class WheelDrive : MonoBehaviour
+public class WheelDriveOption : MonoBehaviour
 {
-    [Tooltip("Maximum steering angle of the wheels")]
+  [Tooltip("Maximum steering angle of the wheels")]
 	public float maxAngle = 30f;
 	[Tooltip("Maximum torque applied to the driving wheels")]
 	public float maxTorque = 300f;
@@ -22,23 +22,23 @@ public class WheelDrive : MonoBehaviour
 	public GameObject wheelShape;
 
 	[Tooltip("The vehicle's speed when the physics engine can use different amount of sub-steps (in m/s).")]
-	public float criticalSpeed = 5f;
+	public float c_velocity = 5f;
 	[Tooltip("Simulation sub-steps when the speed is above critical.")]
-	public int stepsBelow = 5;
+	public int b_steps = 5;
 	[Tooltip("Simulation sub-steps when the speed is below critical.")]
-	public int stepsAbove = 1;
+	public int a_steps = 1;
 
 	[Tooltip("The vehicle's drive type: rear-wheels drive, front-wheels drive or all-wheels drive.")]
 	public DriveType driveType;
 
-    private WheelCollider[] m_Wheels;
+    private WheelCollider[] w_type;
 
 	[SerializeField] PhotonView _photonView;
 
     // Find all the WheelColliders down in the hierarchy.
 	void Start()
 	{
-		m_Wheels = GetComponentsInChildren<WheelCollider>();
+		w_type = GetComponentsInChildren<WheelCollider>();
 
 	}
 
@@ -47,14 +47,14 @@ public class WheelDrive : MonoBehaviour
 	{
         if (_photonView.IsMine)
         {
-			m_Wheels[0].ConfigureVehicleSubsteps(criticalSpeed, stepsBelow, stepsAbove);
+			w_type[0].ConfigureVehicleSubsteps(c_velocity, b_steps, a_steps);
 
 			float angle = maxAngle * Input.GetAxis("Horizontal");
 			float torque = maxTorque * Input.GetAxis("Vertical");
 
 			float handBrake = Input.GetKey(KeyCode.X) ? brakeTorque : 0;
 
-			foreach (WheelCollider wheel in m_Wheels)
+			foreach (WheelCollider wheel in w_type)
 			{
 				// A simple car where front wheels steer while rear ones drive.
 				if (wheel.transform.localPosition.z > 0)
