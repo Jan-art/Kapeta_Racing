@@ -50,8 +50,9 @@ public class WheelDriveOption : MonoBehaviour
 			w_type[0].ConfigureVehicleSubsteps(c_velocity, b_steps, a_steps);
 
 			float angle = maxAngle * Input.GetAxis("Horizontal");
+			//Debug.Log("Angle: " + angle);
 			float torque = maxTorque * Input.GetAxis("Vertical");
-
+			//Debug.Log("Torque: " + torque);
 			float handBrake = Input.GetKey(KeyCode.X) ? brakeTorque : 0;
 
 			foreach (WheelCollider wheel in w_type)
