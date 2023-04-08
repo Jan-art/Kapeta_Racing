@@ -9,6 +9,7 @@ public class LapTrigger : MonoBehaviour
  public GameObject LapFinishTrig;
  public GameObject HalfLapTrig;
 
+
     void OnTriggerEnter()
     {
     LapFinishTrig.SetActive(true);
@@ -18,5 +19,5 @@ public class LapTrigger : MonoBehaviour
     Debug.Log("Wall-2 Closed");
     }
 
-
+ 
 }

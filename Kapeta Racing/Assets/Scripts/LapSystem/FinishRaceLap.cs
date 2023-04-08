@@ -8,12 +8,15 @@ public class FinishRaceLap : MonoBehaviour
 {
    public GameObject LapFinish_Trig;
    public GameObject HalfLap_Trig;
+   public GameObject raceEnd_Trig;
 
     public GameObject Min_Display;
     public GameObject Sec_Display;
     public GameObject Mls_Display;
 
-    public GameObject LapTimeBox;
+    //public GameObject WinPanel;
+
+    
 
     void OnTriggerEnter(){
 
@@ -43,6 +46,9 @@ public class FinishRaceLap : MonoBehaviour
 
     HalfLap_Trig.SetActive(true);
     LapFinish_Trig.SetActive(false);
+    raceEnd_Trig.SetActive(true);
+
     }
+
     
 }

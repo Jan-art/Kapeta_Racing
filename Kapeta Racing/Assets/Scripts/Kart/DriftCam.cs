@@ -10,7 +10,7 @@ public class DriftCam : MonoBehaviour
         public bool CamUpdateState;
         public bool CamFixedState = true;
         public bool CamUpdatedLateState;
-        public KeyCode switchViewKey = KeyCode.Space;
+        //public KeyCode switchViewKey = KeyCode.Space;
     }
 
     public float smoothing = 6.3f;
@@ -36,8 +36,8 @@ public class DriftCam : MonoBehaviour
 
     private void Update ()
     {
-        if (Input.GetKey(camerastateOptions.switchViewKey))
-            SideViewOn = !SideViewOn;
+        // if (Input.GetKey(camerastateOptions.switchViewKey))
+        //     SideViewOn = !SideViewOn;
 
         if(camerastateOptions.CamUpdateState)
             UpdateCamera ();

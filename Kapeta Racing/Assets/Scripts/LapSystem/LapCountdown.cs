@@ -13,6 +13,18 @@ public class LapCountdown : MonoBehaviour
   public GameObject LapTimer;
   public GameObject CarStopON;
 
+  public GameObject GreenLight1;
+  public GameObject GreenLight2;
+  public GameObject GreenLight3;
+
+  public Color orColor = new Color(0.2F, 0.3F, 0.4F);
+
+
+  public GameObject GreenLight4;
+  public GameObject GreenLight5;
+  public GameObject GreenLight6;
+
+
   void Start()
   {
     StartCoroutine(CountdownStart());
@@ -25,20 +37,32 @@ public class LapCountdown : MonoBehaviour
     CountdownTimer.GetComponent<TMP_Text>().text = "3";
     ReadySound.GetComponent<AudioSource>().Play();
     CountdownTimer.SetActive(true);
+    GreenLight6.GetComponent<Renderer>().material.color = orColor;
+
     yield return new WaitForSeconds(1);
     CountdownTimer.SetActive(false);
     CountdownTimer.GetComponent<TMP_Text>().text = "2";
      ReadySound.GetComponent<AudioSource>().Play();
     CountdownTimer.SetActive(true);
+    GreenLight5.GetComponent<Renderer>().material.color = orColor;
+    
     yield return new WaitForSeconds(1);
     CountdownTimer.SetActive(false);
     CountdownTimer.GetComponent<TMP_Text>().text = "1";
     ReadySound.GetComponent<AudioSource>().Play();
     CountdownTimer.SetActive(true);
+    GreenLight4.GetComponent<Renderer>().material.color = orColor;
+
     yield return new WaitForSeconds(1);
     CountdownTimer.SetActive(false);
      StartSound.GetComponent<AudioSource>().Play();
+     CountdownTimer.GetComponent<TMP_Text>().text = "1";
     LapTimer.SetActive(true);
+    
+    GreenLight1.GetComponent<Renderer>().material.color = Color.green;
+    GreenLight2.GetComponent<Renderer>().material.color = Color.green;
+    GreenLight3.GetComponent<Renderer>().material.color = Color.green;
+
     CarStopON. GetComponent<WheelDriveOption>().enabled = true;
   }
 }
