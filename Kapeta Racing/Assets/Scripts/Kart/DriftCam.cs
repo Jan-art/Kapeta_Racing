@@ -36,9 +36,7 @@ public class DriftCam : MonoBehaviour
 
     private void Update ()
     {
-        // if (Input.GetKey(camerastateOptions.switchViewKey))
-        //     SideViewOn = !SideViewOn;
-
+     
         if(camerastateOptions.CamUpdateState)
             UpdateCamera ();
     }

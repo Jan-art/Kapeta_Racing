@@ -56,7 +56,7 @@ public class LapCountdown : MonoBehaviour
     yield return new WaitForSeconds(1);
     CountdownTimer.SetActive(false);
      StartSound.GetComponent<AudioSource>().Play();
-     CountdownTimer.GetComponent<TMP_Text>().text = "1";
+     CountdownTimer.GetComponent<TMP_Text>().text = "GO!";
     LapTimer.SetActive(true);
     
     GreenLight1.GetComponent<Renderer>().material.color = Color.green;
