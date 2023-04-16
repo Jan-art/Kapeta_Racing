@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityStandardAssets.Vehicles.Car;
 
 public class LapCountdown : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class LapCountdown : MonoBehaviour
   public GameObject CountdownTimer;
   public GameObject LapTimer;
   public GameObject CarStopON;
+  public GameObject GhostKartON;
 
   public GameObject GreenLight1;
   public GameObject GreenLight2;
@@ -64,5 +66,6 @@ public class LapCountdown : MonoBehaviour
     GreenLight3.GetComponent<Renderer>().material.color = Color.green;
 
     CarStopON. GetComponent<WheelDriveOption>().enabled = true;
+    GhostKartON.GetComponent<CarAIControl>().enabled = true;
   }
 }

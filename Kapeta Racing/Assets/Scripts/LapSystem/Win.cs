@@ -5,6 +5,7 @@ using UnityEngine;
 public class Win : MonoBehaviour
 {
     public GameObject WinPanel;
+    public GameObject LossPanel;
     public GameObject raceEnd_Trig;
     public static bool StateOn = false;
 

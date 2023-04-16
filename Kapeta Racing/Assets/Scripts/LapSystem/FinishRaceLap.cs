@@ -17,7 +17,7 @@ public class FinishRaceLap : MonoBehaviour
     //public GameObject WinPanel;
 
     
-
+// Countdown timer 
     void OnTriggerEnter(){
 
     if (TimeManager.sec_Track <= 9)
@@ -38,7 +38,12 @@ public class FinishRaceLap : MonoBehaviour
         Min_Display.GetComponent<TMP_Text>().text = "" + TimeManager.min_Track + ":";
     }
 
-    Mls_Display.GetComponent<TMP_Text>().text = "" + TimeManager.mls_Show;
+    Mls_Display.GetComponent<TMP_Text>().text = "" + TimeManager.ms_Track;
+
+    PlayerPrefs.SetInt("MinuteSave", TimeManager.min_Track);
+    PlayerPrefs.SetInt("SecondSave", TimeManager.sec_Track);
+    PlayerPrefs.SetFloat("MilliSave", TimeManager.ms_Track);
+    
 
     TimeManager.min_Track = 0;
     TimeManager.sec_Track = 0;
