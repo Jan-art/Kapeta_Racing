@@ -22,8 +22,8 @@ public class BestLapTime : MonoBehaviour
         sec_Track = PlayerPrefs.GetInt("SecondSave");
         ms_Track = PlayerPrefs.GetFloat("MilliSave");
         
-        MinDisplay.GetComponent<TMP_Text>().text = "" + min_Track;
-        SecDisplay.GetComponent<TMP_Text>().text = "" + sec_Track;
-        MlsDisplay.GetComponent<TMP_Text>().text = "" + ms_Track;
+        MinDisplay.GetComponent<TMP_Text>().text = min_Track.ToString("D2") + ":";
+        SecDisplay.GetComponent<TMP_Text>().text = sec_Track.ToString("D2") + ".";
+        MlsDisplay.GetComponent<TMP_Text>().text = ms_Track.ToString("f0");
     }
 }
