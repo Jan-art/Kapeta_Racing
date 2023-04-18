@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using Photon.Pun;
+//using Photon.Pun;
 using TMPro;
 
 public class SpeedMeter : MonoBehaviour
 {
     [SerializeField] GameObject _speedMeterOBJ;
     [SerializeField] Rigidbody _KartBody;
-    // PhotonView component of the player
-    [SerializeField] PhotonView _photonView;
+    
+    //[SerializeField] PhotonView _photonView;
    
     [SerializeField] float _maxSpeed = 0.0f; 
 
@@ -17,6 +17,7 @@ public class SpeedMeter : MonoBehaviour
     public float minPitch;
     public float maxPitch;
     private float EngineAudio;
+    //bool isLocalPlayer = true;
 
     [SerializeField] float _lowArrowAngle;
     [SerializeField] float _highArrowAngle;
@@ -30,19 +31,18 @@ public class SpeedMeter : MonoBehaviour
 
     void Start()
     {
-        if (!_photonView.IsMine)
-        {
-            _speedMeterOBJ.SetActive(false);
-        }
-
+        
+    
+        _speedMeterOBJ.SetActive(true);
+        
+    
         EngineAudioSource = GetComponent<AudioSource>();
         
     }
 
     private void Update()
     {
-        if (_photonView.IsMine)
-        {
+        
             // 3.6f for KM 
             _ConstSpeed = _KartBody.velocity.magnitude * 3.6f;
 
@@ -67,7 +67,7 @@ public class SpeedMeter : MonoBehaviour
                 _speedText.gameObject.SetActive(true);
                 
             }
-        }
+        
 
         EngineSound();
     }

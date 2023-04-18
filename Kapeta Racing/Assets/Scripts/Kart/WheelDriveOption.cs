@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System;
-using Photon.Pun;
+//using Photon.Pun;
 
 [Serializable]
 public enum DriveType
@@ -33,7 +33,7 @@ public class WheelDriveOption : MonoBehaviour
 
     private WheelCollider[] w_type;
 
-	[SerializeField] PhotonView _photonView;
+	//[SerializeField] PhotonView _photonView;
 
     // Find all the WheelColliders down in the hierarchy.
 	void Start()
@@ -45,8 +45,7 @@ public class WheelDriveOption : MonoBehaviour
 
 	void Update()
 	{
-        if (_photonView.IsMine)
-        {
+        
 			w_type[0].ConfigureVehicleSubsteps(c_velocity, b_steps, a_steps);
 
 			float angle = maxAngle * Input.GetAxis("Horizontal");
@@ -97,7 +96,7 @@ public class WheelDriveOption : MonoBehaviour
 						shapeTransform.rotation = q;
 					}
 				}
-			}
+			
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Photon.Pun;
+//using Photon.Pun;
 
 // ========================================================================================================
 [ExecuteInEditMode]
@@ -22,7 +22,7 @@ public class SuspensionLogic : MonoBehaviour
 
     Rigidbody v_rigb;
 
-    [SerializeField] PhotonView _photonView;
+    //[SerializeField] PhotonView _photonView;
 
     //========================================================================================================
 
@@ -34,7 +34,7 @@ public class SuspensionLogic : MonoBehaviour
     
 	void Update () 
     {
-        if (_photonView.IsMine)
+        //if (_photonView.IsMine)
         {
             //  Damper parameters based on the better spring model.
             foreach (WheelCollider wc in GetComponentsInChildren<WheelCollider>())
