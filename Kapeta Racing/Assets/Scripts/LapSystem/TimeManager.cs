@@ -18,10 +18,13 @@ public class TimeManager : MonoBehaviour
    public GameObject s_Box;
    public GameObject mls_Box;
 
+   public static float originTime;
+
     // Update is called once per frame
     void Update()
     {
         ms_Track += Time.deltaTime * 10;
+        originTime += Time.deltaTime;
         mls_Show = Mathf.Floor(ms_Track).ToString("f0");
         mls_Box.GetComponent<TMP_Text>().text = "" + mls_Show;
 

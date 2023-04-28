@@ -14,11 +14,27 @@ public class MenuManager : MonoBehaviour
 
     //     }
     // }
-
+   
+   public string link;
     
-   public void Load(string sceneToLoad)
+   public void LoadLevelSelection(string sceneToLoad)
     {
-        SceneManager.LoadScene("Circuit Track");
+        SceneManager.LoadScene("Track_Select");
+        Debug.Log("Game loaded");
+
+    }
+
+    public void LoadLevel1(string sceneToLoad)
+    {
+        SceneManager.LoadScene("Map1");
+        Debug.Log("Game loaded");
+
+    }
+
+    public void LoadLevel2(string sceneToLoad)
+    {
+        SceneManager.LoadScene("Map2");
+        AudioListener.volume = 1;
         Debug.Log("Game loaded");
 
     }
@@ -29,5 +45,17 @@ public class MenuManager : MonoBehaviour
      Debug.Log("Game exiting");
     }
 
+   public void LoadGit()
+   {
+     Application.OpenURL(link); //URL needs to be changed from button : )
+     Debug.Log("Git loaded");
+   }
+
+    public void LoadMenu()
+    {
+        Debug.Log("Loading Menu");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
 
 }

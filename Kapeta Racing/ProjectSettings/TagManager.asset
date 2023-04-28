@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CollisionTag
   - GhostKart01
+  - Level1Won
   layers:
   - Default
   - TransparentFX

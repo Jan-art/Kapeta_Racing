@@ -7,29 +7,51 @@ public class Win : MonoBehaviour
     public GameObject WinPanel;
     public GameObject LossPanel;
     public GameObject raceEnd_Trig;
+    public GameObject AIVehicle; //AI Vehicle
     public static bool StateOn = false;
 
-    public void MuteAllSound()
+    public void MuteSceneSound()
     {
-    AudioListener.volume = 0;
+        // Get all AudioSources in the current scene and set their volume to 0
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource source in audioSources)
+        {
+            source.volume = 0;
+        }
     }
 
-    public void UnMuteAllSound()
+    public void UnMuteSceneSound()
     {
-    AudioListener.volume = 1;
+        // Get all AudioSources in the current scene and set their volume to 1
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource source in audioSources)
+        {
+            source.volume = 1;
+        }
     }
 
 
-    void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
-     
-        raceEnd_Trig.SetActive(false);
-        WinPanel.SetActive(true);
-        Time.timeScale = 0f;
-        StateOn = true;
-        MuteAllSound();
-       
-      
-        Debug.Log("Win");
+        if (other.CompareTag("GhostKart01"))
+        {
+            raceEnd_Trig.SetActive(false);
+            LossPanel.SetActive(true);
+            Time.timeScale = 0f;
+            StateOn = true;
+             MuteSceneSound();
+
+            Debug.Log("Loss");
+        }
+        else
+        {
+            raceEnd_Trig.SetActive(false);
+            WinPanel.SetActive(true);
+            Time.timeScale = 0f;
+            StateOn = true;
+             MuteSceneSound();
+
+            Debug.Log("Win");
+        }
     }
 }
